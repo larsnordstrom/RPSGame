@@ -5,17 +5,23 @@
  */
 package app;
 
+import java.util.Random;
+
 /**
  *
  * @author Lars Nordstrom <lars.nordstrom@jgy.se>
  */
 public class Game extends javax.swing.JFrame {
-    
+
     int playerScore = 0;
     int computerScore = 0;
     String playerChoice = "";
     String computerChoice = "";
     
+    String choices[] = {"ROCK", "PAPER", "SCISSORS"};
+    
+    int scoreToWin = 3;
+    Random random = new Random();
     /**
      * Creates new form Game
      */
@@ -74,14 +80,16 @@ public class Game extends javax.swing.JFrame {
             }
         });
 
-        lblOutcome.setText("Outcome");
+        lblOutcome.setText("Play Game!");
 
         lblPlayer.setText("Player");
 
+        lblPlayerScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPlayerScore.setText("0");
 
         lblComputer.setText("Computer");
 
+        lblComputerScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblComputerScore.setText("0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -90,35 +98,40 @@ public class Game extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnReset))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRock)
-                            .addComponent(lblPlayerChoice))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btnPaper)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnScissors))
+                                .addGap(143, 143, 143)
+                                .addComponent(lblPlayerChoice)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRock)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnPaper)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnScissors))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addComponent(lblOutcome)
+                                        .addGap(35, 35, 35)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblComputerChoice))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(lblOutcome)
-                                .addGap(35, 35, 35)
-                                .addComponent(lblComputerChoice)))
-                        .addGap(0, 71, Short.MAX_VALUE))
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblPlayerScore, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblPlayer))
+                                .addGap(418, 418, 418)
+                                .addComponent(lblComputer)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblPlayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblPlayerScore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblComputer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblComputerScore, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(473, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnReset, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lblComputerScore, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -127,12 +140,13 @@ public class Game extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblPlayer)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPlayer)
+                            .addComponent(lblComputer))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPlayerScore))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblComputer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(23, 23, 23)
                         .addComponent(lblComputerScore)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -154,18 +168,61 @@ public class Game extends javax.swing.JFrame {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         // TODO add your handling code here:
+        playerScore = 0;
+        computerScore = 0;
+        playerChoice = "";
+        computerChoice = "";
+        lblPlayerChoice.setText(playerChoice);
+        lblComputerChoice.setText(computerChoice);
+        lblPlayerScore.setText("0");
+        lblComputerScore.setText("0");
+        lblOutcome.setText("Play Game!");
+
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnRockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRockActionPerformed
         // TODO add your handling code here:
+        playerChoice = "ROCK";
+        lblPlayerChoice.setText(playerChoice);
+        computerChoice = choices[random.nextInt(3)];
+        lblComputerChoice.setText(computerChoice);
+        
+        if(computerChoice.equals("SCISSORS")){
+            lblOutcome.setText("Player Wins!");
+            playerScore += 1;
+            lblPlayerScore.setText("" + playerScore);
+        }
+        
+        if(computerChoice.equals("PAPER")){
+            lblOutcome.setText("Computer Wins!");
+            computerScore += 1;
+            lblComputerScore.setText("" + computerScore);
+        }
+        
+        if(computerChoice.equals("ROCK")){
+            lblOutcome.setText("It´s a draw!");
+        }
+        
+        if(playerScore == scoreToWin){
+            lblOutcome.setText("Player Wins The Game!");
+        }
+        
+        if(computerScore == scoreToWin){
+            lblOutcome.setText("Computer Wins The Game!");
+        }
+
     }//GEN-LAST:event_btnRockActionPerformed
 
     private void btnPaperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaperActionPerformed
         // TODO add your handling code here:
+        playerChoice = "PAPER";
+        lblPlayerChoice.setText(playerChoice);
     }//GEN-LAST:event_btnPaperActionPerformed
 
     private void btnScissorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScissorsActionPerformed
         // TODO add your handling code here:
+        playerChoice = "SCISSORS";
+        lblPlayerChoice.setText(playerChoice);
     }//GEN-LAST:event_btnScissorsActionPerformed
 
     /**
