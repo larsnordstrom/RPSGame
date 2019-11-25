@@ -17,11 +17,12 @@ public class Game extends javax.swing.JFrame {
     int computerScore = 0;
     String playerChoice = "";
     String computerChoice = "";
-    
+
     String choices[] = {"ROCK", "PAPER", "SCISSORS"};
-    
+
     int scoreToWin = 3;
     Random random = new Random();
+
     /**
      * Creates new form Game
      */
@@ -186,28 +187,28 @@ public class Game extends javax.swing.JFrame {
         lblPlayerChoice.setText(playerChoice);
         computerChoice = choices[random.nextInt(3)];
         lblComputerChoice.setText(computerChoice);
-        
-        if(computerChoice.equals("SCISSORS")){
+
+        if (computerChoice.equals("SCISSORS")) {
             lblOutcome.setText("Player Wins!");
             playerScore += 1;
             lblPlayerScore.setText("" + playerScore);
         }
-        
-        if(computerChoice.equals("PAPER")){
+
+        if (computerChoice.equals("PAPER")) {
             lblOutcome.setText("Computer Wins!");
             computerScore += 1;
             lblComputerScore.setText("" + computerScore);
         }
-        
-        if(computerChoice.equals("ROCK")){
+
+        if (computerChoice.equals("ROCK")) {
             lblOutcome.setText("It´s a draw!");
         }
-        
-        if(playerScore == scoreToWin){
+
+        if (playerScore == scoreToWin) {
             lblOutcome.setText("Player Wins The Game!");
         }
-        
-        if(computerScore == scoreToWin){
+
+        if (computerScore == scoreToWin) {
             lblOutcome.setText("Computer Wins The Game!");
         }
 
@@ -217,12 +218,64 @@ public class Game extends javax.swing.JFrame {
         // TODO add your handling code here:
         playerChoice = "PAPER";
         lblPlayerChoice.setText(playerChoice);
+        computerChoice = choices[random.nextInt(3)];
+        lblComputerChoice.setText(computerChoice);
+
+        if (computerChoice.equals("ROCK")) {
+            lblOutcome.setText("Player Wins!");
+            playerScore += 1;
+            lblPlayerScore.setText("" + playerScore);
+        }
+
+        if (computerChoice.equals("SCISSORS")) {
+            lblOutcome.setText("Computer Wins!");
+            computerScore += 1;
+            lblComputerScore.setText("" + computerScore);
+        }
+
+        if (computerChoice.equals("PAPER")) {
+            lblOutcome.setText("It´s a draw!");
+        }
+
+        if (playerScore == scoreToWin) {
+            lblOutcome.setText("Player Wins The Game!");
+        }
+
+        if (computerScore == scoreToWin) {
+            lblOutcome.setText("Computer Wins The Game!");
+        }
     }//GEN-LAST:event_btnPaperActionPerformed
 
     private void btnScissorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScissorsActionPerformed
         // TODO add your handling code here:
         playerChoice = "SCISSORS";
         lblPlayerChoice.setText(playerChoice);
+        computerChoice = choices[random.nextInt(3)];
+        lblComputerChoice.setText(computerChoice);
+
+        if (computerChoice.equals("PAPER")) {
+            lblOutcome.setText("Player Wins!");
+            playerScore += 1;
+            lblPlayerScore.setText("" + playerScore);
+        }
+
+        if (computerChoice.equals("ROCK")) {
+            lblOutcome.setText("Computer Wins!");
+            computerScore += 1;
+            lblComputerScore.setText("" + computerScore);
+        }
+
+        if (computerChoice.equals("SCISSORS")) {
+            lblOutcome.setText("It´s a draw!");
+        }
+
+        if (playerScore == scoreToWin) {
+            lblOutcome.setText("Player Wins The Game!");
+        }
+
+        if (computerScore == scoreToWin) {
+            lblOutcome.setText("Computer Wins The Game!");
+        }
     }//GEN-LAST:event_btnScissorsActionPerformed
 
     /**
