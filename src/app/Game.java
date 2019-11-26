@@ -44,14 +44,17 @@ public class Game extends javax.swing.JFrame {
         btnRock = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         lblOutcome = new javax.swing.JLabel();
-        lblPlayerChoice = new javax.swing.JLabel();
-        lblComputerChoice = new javax.swing.JLabel();
+        lblPlayerChoice = new javax.swing.JLabel("...");
+        lblComputerChoice = new javax.swing.JLabel("...");
         lblPlayer = new javax.swing.JLabel();
         lblPlayerScore = new javax.swing.JLabel();
         lblComputer = new javax.swing.JLabel();
         lblComputerScore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 204, 0));
+        setName("MainFrame"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(420, 320));
 
         btnScissors.setText("Scissors");
         btnScissors.addActionListener(new java.awt.event.ActionListener() {
@@ -81,15 +84,30 @@ public class Game extends javax.swing.JFrame {
             }
         });
 
+        lblOutcome.setFont(new java.awt.Font("Monaco", 1, 14)); // NOI18N
+        lblOutcome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblOutcome.setText("Play Game!");
 
+        lblPlayerChoice.setFont(new java.awt.Font("Monaco", 1, 14)); // NOI18N
+        lblPlayerChoice.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPlayerChoice.setText("...");
+
+        lblComputerChoice.setFont(new java.awt.Font("Monaco", 1, 14)); // NOI18N
+        lblComputerChoice.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblComputerChoice.setText("...");
+
+        lblPlayer.setFont(new java.awt.Font("Monaco", 1, 14)); // NOI18N
+        lblPlayer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPlayer.setText("Player");
 
         lblPlayerScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPlayerScore.setText("0");
 
+        lblComputer.setFont(new java.awt.Font("Monaco", 1, 14)); // NOI18N
+        lblComputer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblComputer.setText("Computer");
 
+        lblComputerScore.setFont(new java.awt.Font("Monaco", 1, 14)); // NOI18N
         lblComputerScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblComputerScore.setText("0");
 
@@ -98,71 +116,69 @@ public class Game extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnRock)
+                            .addGap(6, 6, 6)
+                            .addComponent(btnPaper)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnScissors))
+                        .addComponent(btnReset))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(143, 143, 143)
                                 .addComponent(lblPlayerChoice)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRock)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnPaper)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnScissors))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(27, 27, 27)
-                                        .addComponent(lblOutcome)
-                                        .addGap(35, 35, 35)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblComputerChoice))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblPlayerScore, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblPlayer))
-                                .addGap(418, 418, 418)
-                                .addComponent(lblComputer)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(473, Short.MAX_VALUE)
+                                .addGap(30, 30, 30)
+                                .addComponent(lblOutcome))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblPlayer)
+                                .addComponent(lblPlayerScore, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnReset, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblComputerScore, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)))))
-                .addContainerGap())
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblComputerScore, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblComputer))
+                            .addComponent(lblComputerChoice))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnPaper, btnReset, btnRock, btnScissors});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblComputer, lblComputerScore, lblPlayer, lblPlayerScore});
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblComputerChoice, lblOutcome, lblPlayerChoice});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPlayer)
-                            .addComponent(lblComputer))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPlayerScore))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(lblComputerScore)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblComputer)
+                    .addComponent(lblPlayer))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblComputerScore)
+                    .addComponent(lblPlayerScore))
+                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOutcome)
                     .addComponent(lblPlayerChoice)
                     .addComponent(lblComputerChoice))
-                .addGap(71, 71, 71)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btnRock)
                     .addComponent(btnPaper)
                     .addComponent(btnScissors))
-                .addGap(39, 39, 39)
+                .addGap(30, 30, 30)
                 .addComponent(btnReset)
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnPaper, btnReset, btnRock, btnScissors});
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblComputer, lblComputerChoice, lblComputerScore, lblOutcome, lblPlayer, lblPlayerChoice, lblPlayerScore});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,6 +194,9 @@ public class Game extends javax.swing.JFrame {
         lblPlayerScore.setText("0");
         lblComputerScore.setText("0");
         lblOutcome.setText("Play Game!");
+        btnRock.setEnabled(true);
+        btnPaper.setEnabled(true);
+        btnScissors.setEnabled(true);
 
     }//GEN-LAST:event_btnResetActionPerformed
 
@@ -206,10 +225,16 @@ public class Game extends javax.swing.JFrame {
 
         if (playerScore == scoreToWin) {
             lblOutcome.setText("Player Wins The Game!");
+            btnRock.setEnabled(false);
+            btnPaper.setEnabled(false);
+            btnScissors.setEnabled(false);
         }
 
         if (computerScore == scoreToWin) {
             lblOutcome.setText("Computer Wins The Game!");
+            btnRock.setEnabled(false);
+            btnPaper.setEnabled(false);
+            btnScissors.setEnabled(false);
         }
 
     }//GEN-LAST:event_btnRockActionPerformed
@@ -239,10 +264,16 @@ public class Game extends javax.swing.JFrame {
 
         if (playerScore == scoreToWin) {
             lblOutcome.setText("Player Wins The Game!");
+            btnRock.setEnabled(false);
+            btnPaper.setEnabled(false);
+            btnScissors.setEnabled(false);
         }
 
         if (computerScore == scoreToWin) {
             lblOutcome.setText("Computer Wins The Game!");
+            btnRock.setEnabled(false);
+            btnPaper.setEnabled(false);
+            btnScissors.setEnabled(false);
         }
     }//GEN-LAST:event_btnPaperActionPerformed
 
@@ -271,10 +302,16 @@ public class Game extends javax.swing.JFrame {
 
         if (playerScore == scoreToWin) {
             lblOutcome.setText("Player Wins The Game!");
+            btnRock.setEnabled(false);
+            btnPaper.setEnabled(false);
+            btnScissors.setEnabled(false);
         }
 
         if (computerScore == scoreToWin) {
             lblOutcome.setText("Computer Wins The Game!");
+            btnRock.setEnabled(false);
+            btnPaper.setEnabled(false);
+            btnScissors.setEnabled(false);
         }
     }//GEN-LAST:event_btnScissorsActionPerformed
 
