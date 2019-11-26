@@ -1,5 +1,5 @@
-/nbproject/
-/build/
-/dist/
+nbproject/*
+build/*
+dist/*
 build.xml
 manifes.mf
