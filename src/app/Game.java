@@ -54,33 +54,32 @@ public class Game extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 0));
         setName("MainFrame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(420, 320));
 
         btnScissors.setText("Scissors");
         btnScissors.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnScissorsActionPerformed(evt);
+                buttonHandler(evt);
             }
         });
 
         btnPaper.setText("Paper");
         btnPaper.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPaperActionPerformed(evt);
+                buttonHandler(evt);
             }
         });
 
         btnRock.setText("Rock");
         btnRock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRockActionPerformed(evt);
+                buttonHandler(evt);
             }
         });
 
         btnReset.setText("Reset");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetActionPerformed(evt);
+                buttonHandler(evt);
             }
         });
 
@@ -117,7 +116,17 @@ public class Game extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblPlayer)
+                    .addComponent(lblPlayerScore, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblComputerScore, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblComputer))
+                .addGap(49, 49, 49))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(btnRock)
@@ -127,21 +136,12 @@ public class Game extends javax.swing.JFrame {
                             .addComponent(btnScissors))
                         .addComponent(btnReset))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPlayerChoice)
-                                .addGap(30, 30, 30)
-                                .addComponent(lblOutcome))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblPlayer)
-                                .addComponent(lblPlayerScore, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblPlayerChoice)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblComputerScore, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblComputer))
-                            .addComponent(lblComputerChoice))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(lblOutcome)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblComputerChoice)))
+                .addGap(0, 39, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnPaper, btnReset, btnRock, btnScissors});
@@ -183,137 +183,24 @@ public class Game extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+    private void buttonHandler(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonHandler
         // TODO add your handling code here:
-        playerScore = 0;
-        computerScore = 0;
-        playerChoice = "";
-        computerChoice = "";
-        lblPlayerChoice.setText(playerChoice);
-        lblComputerChoice.setText(computerChoice);
-        lblPlayerScore.setText("0");
-        lblComputerScore.setText("0");
-        lblOutcome.setText("Play Game!");
-        btnRock.setEnabled(true);
-        btnPaper.setEnabled(true);
-        btnScissors.setEnabled(true);
+        if (evt.getSource() == btnRock) {
 
-    }//GEN-LAST:event_btnResetActionPerformed
-
-    private void btnRockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRockActionPerformed
-        // TODO add your handling code here:
-        playerChoice = "ROCK";
-        lblPlayerChoice.setText(playerChoice);
-        computerChoice = choices[random.nextInt(3)];
-        lblComputerChoice.setText(computerChoice);
-
-        if (computerChoice.equals("SCISSORS")) {
-            lblOutcome.setText("Player Wins!");
-            playerScore += 1;
-            lblPlayerScore.setText("" + playerScore);
         }
 
-        if (computerChoice.equals("PAPER")) {
-            lblOutcome.setText("Computer Wins!");
-            computerScore += 1;
-            lblComputerScore.setText("" + computerScore);
+        if (evt.getSource() == btnPaper) {
+
         }
 
-        if (computerChoice.equals("ROCK")) {
-            lblOutcome.setText("It´s a draw!");
+        if (evt.getSource() == btnScissors) {
+
         }
+        
+        if (evt.getSource() == btnReset) {
 
-        if (playerScore == scoreToWin) {
-            lblOutcome.setText("Player Wins The Game!");
-            btnRock.setEnabled(false);
-            btnPaper.setEnabled(false);
-            btnScissors.setEnabled(false);
         }
-
-        if (computerScore == scoreToWin) {
-            lblOutcome.setText("Computer Wins The Game!");
-            btnRock.setEnabled(false);
-            btnPaper.setEnabled(false);
-            btnScissors.setEnabled(false);
-        }
-
-    }//GEN-LAST:event_btnRockActionPerformed
-
-    private void btnPaperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaperActionPerformed
-        // TODO add your handling code here:
-        playerChoice = "PAPER";
-        lblPlayerChoice.setText(playerChoice);
-        computerChoice = choices[random.nextInt(3)];
-        lblComputerChoice.setText(computerChoice);
-
-        if (computerChoice.equals("ROCK")) {
-            lblOutcome.setText("Player Wins!");
-            playerScore += 1;
-            lblPlayerScore.setText("" + playerScore);
-        }
-
-        if (computerChoice.equals("SCISSORS")) {
-            lblOutcome.setText("Computer Wins!");
-            computerScore += 1;
-            lblComputerScore.setText("" + computerScore);
-        }
-
-        if (computerChoice.equals("PAPER")) {
-            lblOutcome.setText("It´s a draw!");
-        }
-
-        if (playerScore == scoreToWin) {
-            lblOutcome.setText("Player Wins The Game!");
-            btnRock.setEnabled(false);
-            btnPaper.setEnabled(false);
-            btnScissors.setEnabled(false);
-        }
-
-        if (computerScore == scoreToWin) {
-            lblOutcome.setText("Computer Wins The Game!");
-            btnRock.setEnabled(false);
-            btnPaper.setEnabled(false);
-            btnScissors.setEnabled(false);
-        }
-    }//GEN-LAST:event_btnPaperActionPerformed
-
-    private void btnScissorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScissorsActionPerformed
-        // TODO add your handling code here:
-        playerChoice = "SCISSORS";
-        lblPlayerChoice.setText(playerChoice);
-        computerChoice = choices[random.nextInt(3)];
-        lblComputerChoice.setText(computerChoice);
-
-        if (computerChoice.equals("PAPER")) {
-            lblOutcome.setText("Player Wins!");
-            playerScore += 1;
-            lblPlayerScore.setText("" + playerScore);
-        }
-
-        if (computerChoice.equals("ROCK")) {
-            lblOutcome.setText("Computer Wins!");
-            computerScore += 1;
-            lblComputerScore.setText("" + computerScore);
-        }
-
-        if (computerChoice.equals("SCISSORS")) {
-            lblOutcome.setText("It´s a draw!");
-        }
-
-        if (playerScore == scoreToWin) {
-            lblOutcome.setText("Player Wins The Game!");
-            btnRock.setEnabled(false);
-            btnPaper.setEnabled(false);
-            btnScissors.setEnabled(false);
-        }
-
-        if (computerScore == scoreToWin) {
-            lblOutcome.setText("Computer Wins The Game!");
-            btnRock.setEnabled(false);
-            btnPaper.setEnabled(false);
-            btnScissors.setEnabled(false);
-        }
-    }//GEN-LAST:event_btnScissorsActionPerformed
+    }//GEN-LAST:event_buttonHandler
 
     /**
      * @param args the command line arguments
@@ -348,6 +235,10 @@ public class Game extends javax.swing.JFrame {
                 new Game().setVisible(true);
             }
         });
+    }
+
+    public void checkMoves(String playerMove, String computerMove) {
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
